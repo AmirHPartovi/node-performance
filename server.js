@@ -19,7 +19,7 @@ app.get('/timer',(req,res)=>{
 const cpuCore = os.cpus().length;
 
 
-console.log('it shows 10(8worker + 1master + 1before) times')
+console.log('it shows 10 times (8worker + 1master + 1before)')
 if(cluster.isMaster){
     console.log(`master has been started`)
     for(let i=0 ; i<cpuCore ;i++){
@@ -30,3 +30,7 @@ if(cluster.isMaster){
     console.log(`worker started`)
 }
 
+// load balancing => round-robin 
+//first req => first worker
+//second req => second worker
+//and so on
